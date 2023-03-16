@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_excursions">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.borsch_team.hackathonReligion.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_excursions"
+        android:name="com.borsch_team.hackathonReligion.ui.excursions.ExcursionsFragment"
+        android:label="@string/menu_excursions"
+        tools:layout="@layout/fragment_excursions" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.borsch_team.hackathonReligion.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_films"
+        android:name="com.borsch_team.hackathonReligion.ui.films.FilmsFragment"
+        android:label="@string/menu_films"
+        tools:layout="@layout/fragment_films" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.borsch_team.hackathonReligion.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_churches"
+        android:name="com.borsch_team.hackathonReligion.ui.churches.ChurchesFragment"
+        android:label="@string/menu_churches"
+        tools:layout="@layout/fragment_churches" />
 </navigation>
