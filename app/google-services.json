@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "787607053880",
+    "firebase_url": "https://online-shop-a2901-default-rtdb.firebaseio.com",
+    "project_id": "online-shop-a2901",
+    "storage_bucket": "online-shop-a2901.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787607053880:android:3c926c7461a3380afd28cd",
+        "android_client_info": {
+          "package_name": "com.borsch_team.hackathonReligion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787607053880-rtao6hvvin4i03f3671sp7ktfmprldl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvlL-bpAWqGYZV2YDGfJvMmrNyAP3Vnr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787607053880-rtao6hvvin4i03f3671sp7ktfmprldl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
