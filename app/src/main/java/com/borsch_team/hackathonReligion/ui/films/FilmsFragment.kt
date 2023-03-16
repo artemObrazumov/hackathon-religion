@@ -1,5 +1,6 @@
 package com.borsch_team.hackathonReligion.ui.films
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +38,12 @@ class FilmsFragment : Fragment() {
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(binding.root.context)
         adapter = FilmsAdapter {
-            Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, FullScreenPlayerActivity::class.java)
+            intent.putExtra("timeStart", 0)
+            intent.putExtra("fileName", "videoFile")
+            intent.putExtra("urlVideo", it.src_video)
+            intent.putExtra("lastTimePlayer", 0)
+            startActivity(intent)
         }
         recyclerView.adapter = adapter
 

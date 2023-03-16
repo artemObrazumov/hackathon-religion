@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "787607053880",
-    "firebase_url": "https://online-shop-a2901-default-rtdb.firebaseio.com",
-    "project_id": "online-shop-a2901",
-    "storage_bucket": "online-shop-a2901.appspot.com"
+    "project_number": "712594105198",
+    "firebase_url": "https://test-luna-edd43-default-rtdb.firebaseio.com",
+    "project_id": "test-luna-edd43",
+    "storage_bucket": "test-luna-edd43.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:787607053880:android:3c926c7461a3380afd28cd",
+        "mobilesdk_app_id": "1:712594105198:android:1321f60ef3b3703294d77f",
         "android_client_info": {
           "package_name": "com.borsch_team.hackathonReligion"
         }
       },
       "oauth_client": [
         {
-          "client_id": "787607053880-rtao6hvvin4i03f3671sp7ktfmprldl4.apps.googleusercontent.com",
+          "client_id": "712594105198-3cmo5nftgu3nnb4mpdhh8mbs7uiihggm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDvlL-bpAWqGYZV2YDGfJvMmrNyAP3Vnr0"
+          "current_key": "AIzaSyDbIRtoa79vgxk0JdnqSb223R2p6QHAy4A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "787607053880-rtao6hvvin4i03f3671sp7ktfmprldl4.apps.googleusercontent.com",
+              "client_id": "712594105198-3cmo5nftgu3nnb4mpdhh8mbs7uiihggm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
