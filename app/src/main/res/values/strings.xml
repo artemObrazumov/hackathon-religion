@@ -10,7 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_excursions">Экскурсии</string>
+    <string name="menu_temples">Приходы</string>
     <string name="menu_films">Фильмы</string>
-    <string name="menu_churches">Храмы</string>
+    <string name="menu_maps">Карта Храмов</string>
 </resources>

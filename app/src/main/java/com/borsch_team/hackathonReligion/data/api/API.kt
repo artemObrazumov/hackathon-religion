@@ -17,5 +17,9 @@ class API {
 
             return arr
         }
+
+        suspend fun getDataListItemsNewChurches(){
+
+        }
     }
 }

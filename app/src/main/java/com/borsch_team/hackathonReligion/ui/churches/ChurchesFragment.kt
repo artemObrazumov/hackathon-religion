@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.borsch_team.hackathonReligion.R
+import com.borsch_team.hackathonReligion.data.models.Church
 import com.borsch_team.hackathonReligion.databinding.FragmentChurchesBinding
 import com.borsch_team.hackathonReligion.ui.church_info.ChurchInfoFragment
 import com.yandex.mapkit.Animation
@@ -22,6 +24,7 @@ class ChurchesFragment : Fragment() {
     private var _binding: FragmentChurchesBinding? = null
     private val binding get() = _binding!!
     private var mapObjects: MapObjectCollection? = null
+    private lateinit var viewModel: ChurchesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,25 +32,27 @@ class ChurchesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentChurchesBinding.inflate(inflater, container, false)
-        val TARGET_LOCATION = Point(55.386799, 43.814133)
-        binding.mapview.getMap().move(
-            CameraPosition(TARGET_LOCATION, 12.0f, 0.0f, 0.0f),
+        viewModel = ViewModelProvider(this)[ChurchesViewModel::class.java]
+        viewModel.liveDataListItemsOldChurches.observe(viewLifecycleOwner){
+            it.forEach {church ->
+                createOldChurchMark(church)
+            }
+        }
+
+        val TARGET_LOCATION_ARZAMAS = Point(55.386799, 43.814133)
+        binding.mapview.map.move(
+            CameraPosition(TARGET_LOCATION_ARZAMAS, 12.0f, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 1F),
             null
         )
-        mapObjects = binding.mapview.getMap().getMapObjects().addCollection()
-        createMapObjects()
+        mapObjects = binding.mapview.map.mapObjects.addCollection()
+
         return binding.root
     }
 
-    private fun createMapObjects() {
-        ChurchesPositions.oldChurches.forEach {
-            createOldChurchMark(it)
-        }
-    }
 
     private val circleMapObjectTapListener =
-        MapObjectTapListener { mapObject, point ->
+        MapObjectTapListener { mapObject, _ ->
             if (mapObject is PlacemarkMapObject) {
                 val userData = mapObject.userData
                 if (userData is ChurchMarkerData) {
@@ -62,18 +67,19 @@ class ChurchesFragment : Fragment() {
         churchInfoFragment.show(childFragmentManager, "church_$id")
     }
 
-    private fun createOldChurchMark(churchData: ChurchData) {
+    private fun createOldChurchMark(church: Church) {
         val imageView = ImageView(requireContext())
         imageView.setImageResource(R.drawable.baseline_church_24)
         imageView.setColorFilter(ContextCompat.getColor(
             requireContext(), R.color.oldChurch), android.graphics.PorterDuff.Mode.SRC_IN)
         imageView.setBackgroundResource(R.drawable.church_old_item_background)
+
         imageView.setPadding(6,6,6,6)
         imageView.minimumHeight = 48
         imageView.minimumWidth = 48
         val viewProvider = ViewProvider(imageView)
         val church = mapObjects!!.addPlacemark(
-            Point(churchData.x, churchData.y), viewProvider)
+            Point(church.x, church.y), viewProvider)
         church.addTapListener(circleMapObjectTapListener)
         church.userData = ChurchMarkerData("")
     }

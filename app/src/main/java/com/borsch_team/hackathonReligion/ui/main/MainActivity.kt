@@ -13,6 +13,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.borsch_team.hackathonReligion.R
+import com.borsch_team.hackathonReligion.data.api.CreateData
 import com.borsch_team.hackathonReligion.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -56,6 +57,11 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onStart() {
+        super.onStart()
+        CreateData.createData()
     }
 
     override fun onSupportNavigateUp(): Boolean {
