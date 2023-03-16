@@ -16,5 +16,13 @@
             android:id="@+id/nav_churches"
             android:icon="@drawable/map_marker_multiple"
             android:title="@string/menu_maps" />
+        <item
+            android:id="@+id/nav_sign_up_tour"
+            android:icon="@drawable/baseline_edit_note_24"
+            android:title="@string/menu_sign_up_tour" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/baseline_message_24"
+            android:title="@string/menu_feedback" />
     </group>
 </menu>

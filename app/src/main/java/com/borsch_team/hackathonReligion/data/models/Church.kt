@@ -8,4 +8,5 @@ data class Church (
     var name: String = "",
     var description: String = "",
     var urlsImages: ArrayList<String> = ArrayList(),
+    // Добавить принадлежность к приходу
 )

@@ -22,4 +22,16 @@
         android:name="com.borsch_team.hackathonReligion.ui.churches.ChurchesFragment"
         android:label="@string/menu_maps"
         tools:layout="@layout/fragment_churches" />
+
+    <fragment
+        android:id="@+id/nav_feedback"
+        android:name="com.borsch_team.hackathonReligion.ui.feedback.FeedbackFragment"
+        android:label="@string/menu_feedback"
+        tools:layout="@layout/fragment_feedback" />
+
+    <fragment
+        android:id="@+id/nav_sign_up_tour"
+        android:name="com.borsch_team.hackathonReligion.ui.sign_up_tour.SignUpTourFragmen"
+        android:label="@string/menu_sign_up_tour"
+        tools:layout="@layout/fragment_sign_up_tour" />
 </navigation>

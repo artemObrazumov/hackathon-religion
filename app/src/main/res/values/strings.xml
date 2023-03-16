@@ -13,4 +13,6 @@
     <string name="menu_temples">Приходы</string>
     <string name="menu_films">Фильмы</string>
     <string name="menu_maps">Карта Храмов</string>
+    <string name="menu_feedback">Оставить отзыв</string>
+    <string name="menu_sign_up_tour">Записаться на экскурсию</string>
 </resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Оставить отзыв о Приложении:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/feedback_et_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Ваше имя"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/feedback_et_email"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Ваша Электронная почта"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/feedback_et_name"
+        app:layout_constraintTop_toBottomOf="@+id/feedback_et_name" />
+
+    <EditText
+        android:id="@+id/feedback_et_feedback"
+        android:layout_width="302dp"
+        android:layout_height="163dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Текст отзыва о приложении"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/feedback_et_email"
+        app:layout_constraintTop_toBottomOf="@+id/feedback_et_email" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Отправить отзыв"
+        app:layout_constraintStart_toStartOf="@+id/feedback_et_feedback"
+        app:layout_constraintTop_toBottomOf="@+id/feedback_et_feedback" />
+</androidx.constraintlayout.widget.ConstraintLayout>
