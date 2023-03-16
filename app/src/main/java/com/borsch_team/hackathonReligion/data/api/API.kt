@@ -1,6 +1,7 @@
 package com.borsch_team.hackathonReligion.data.api
 
 import com.borsch_team.hackathonReligion.data.models.FilmModel
+import com.borsch_team.hackathonReligion.data.models.Request
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
@@ -19,6 +20,10 @@ class API {
         }
 
         suspend fun getDataListItemsNewChurches(){
+
+        }
+
+        suspend fun uploadRequest(request: Request) {
 
         }
     }
