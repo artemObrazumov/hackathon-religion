@@ -1,8 +1,10 @@
 package com.borsch_team.hackathonReligion.data.api
 
+import com.borsch_team.hackathonReligion.data.models.FeedbackModel
 import com.borsch_team.hackathonReligion.data.models.FilmModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import java.util.UUID
 
 class API {
     companion object{
@@ -17,9 +19,12 @@ class API {
 
             return arr
         }
-
-        suspend fun getDataListItemsNewChurches(){
-
+        fun sendFeedback(name: String, email: String, feedbackText: String){
+            val uuid = UUID.randomUUID().toString()
+            FirebaseFirestore.getInstance().collection("Feedbacks").document(uuid).set(
+                FeedbackModel(uuid, name, email, feedbackText)
+            )
         }
+
     }
 }
