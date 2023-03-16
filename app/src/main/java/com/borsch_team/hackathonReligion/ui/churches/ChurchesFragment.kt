@@ -1,13 +1,11 @@
 package com.borsch_team.hackathonReligion.ui.churches
 
-import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.borsch_team.hackathonReligion.R
 import com.borsch_team.hackathonReligion.databinding.FragmentChurchesBinding
@@ -17,7 +15,6 @@ import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.*
 import com.yandex.mapkit.map.*
 import com.yandex.runtime.ui_view.ViewProvider
-import java.util.*
 
 
 class ChurchesFragment : Fragment() {
@@ -31,11 +28,10 @@ class ChurchesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        MapKitFactory.setApiKey("02a6765a-370c-442e-989a-a3fe5a25bfb7")
         _binding = FragmentChurchesBinding.inflate(inflater, container, false)
-        val TARGET_LOCATION = Point(59.945933, 30.320045)
+        val TARGET_LOCATION = Point(55.386799, 43.814133)
         binding.mapview.getMap().move(
-            CameraPosition(TARGET_LOCATION, 14.0f, 0.0f, 0.0f),
+            CameraPosition(TARGET_LOCATION, 12.0f, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 1F),
             null
         )
@@ -45,7 +41,9 @@ class ChurchesFragment : Fragment() {
     }
 
     private fun createMapObjects() {
-        createTappableCircle()
+        ChurchesPositions.oldChurches.forEach {
+            createOldChurchMark(it)
+        }
     }
 
     private val circleMapObjectTapListener =
@@ -64,15 +62,18 @@ class ChurchesFragment : Fragment() {
         churchInfoFragment.show(childFragmentManager, "church_$id")
     }
 
-    private fun createTappableCircle() {
+    private fun createOldChurchMark(churchData: ChurchData) {
         val imageView = ImageView(requireContext())
-        ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
         imageView.setImageResource(R.drawable.baseline_church_24)
+        imageView.setColorFilter(ContextCompat.getColor(
+            requireContext(), R.color.oldChurch), android.graphics.PorterDuff.Mode.SRC_IN)
+        imageView.setBackgroundResource(R.drawable.church_old_item_background)
+        imageView.setPadding(6,6,6,6)
+        imageView.minimumHeight = 48
+        imageView.minimumWidth = 48
         val viewProvider = ViewProvider(imageView)
-        val church = mapObjects!!.addPlacemark(Point(59.946263, 30.315181), viewProvider)
+        val church = mapObjects!!.addPlacemark(
+            Point(churchData.x, churchData.y), viewProvider)
         church.addTapListener(circleMapObjectTapListener)
         church.userData = ChurchMarkerData("")
     }
