@@ -13,7 +13,7 @@ class TourViewModel : ViewModel() {
 
     fun uploadRequest(request: Request) {
         viewModelScope.launch(Dispatchers.IO) {
-            API.uploadRequest(request)
+            //API.uploadRequest(request)
         }
     }
 }

@@ -9,41 +9,46 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.borsch_team.hackathonReligion.data.models.Church
 import com.borsch_team.hackathonReligion.databinding.FragmentChurchInfoBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 
 class ChurchInfoFragment(
     private val churchID: String
 ) : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentChurchInfoBinding? = null
-    private val binding get() = _binding!!
-    private var _viewModel: ChurchInfoViewModel? = null
-    private val viewModel get() = _viewModel!!
+    private lateinit var binding: FragmentChurchInfoBinding
+    private lateinit var viewModel: ChurchInfoViewModel
+    private var church: Church = Church()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _viewModel =
-            ViewModelProvider(this).get(ChurchInfoViewModel::class.java)
-        _binding = FragmentChurchInfoBinding.inflate(inflater, container, false)
+        viewModel =
+            ViewModelProvider(this)[ChurchInfoViewModel::class.java]
+        binding = FragmentChurchInfoBinding.inflate(inflater, container, false)
+
+        viewModel.viewModelScope.launch{
+            viewModel.getChurchInfo(churchID)
+        }
+        viewModel.mutableLiveDataChurch.observe(viewLifecycleOwner){church ->
+            binding.churchName.text = church.name
+            binding.churchDesc.text = church.description
+        }
+
         customizeDialogState()
         return binding.root
     }
 
     private fun customizeDialogState() {
-        dialog?.setOnShowListener(object: OnShowListener {
-            override fun onShow(dialog: DialogInterface) {
-                binding.root.minimumHeight = Resources.getSystem().getDisplayMetrics().heightPixels
-            }
-        })
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        dialog?.setOnShowListener {
+            binding.root.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
+        }
     }
 }

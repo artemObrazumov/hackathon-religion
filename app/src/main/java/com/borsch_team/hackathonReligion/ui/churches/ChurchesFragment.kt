@@ -78,10 +78,10 @@ class ChurchesFragment : Fragment() {
         imageView.minimumHeight = 48
         imageView.minimumWidth = 48
         val viewProvider = ViewProvider(imageView)
-        val church = mapObjects!!.addPlacemark(
+        val churchMark = mapObjects!!.addPlacemark(
             Point(church.x, church.y), viewProvider)
-        church.addTapListener(circleMapObjectTapListener)
-        church.userData = ChurchMarkerData("")
+        churchMark.addTapListener(circleMapObjectTapListener)
+        churchMark.userData = ChurchMarkerData(church.id)
     }
 
     override fun onDestroyView() {

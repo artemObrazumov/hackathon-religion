@@ -22,7 +22,7 @@ class ChurchesViewModel : ViewModel() {
 
     private fun getDataListItemsOldChurches(){
         liveDataListItemsOldChurches.postValue(arrayListOf(
-            Church(UUID.randomUUID().toString(), 0.00, 0.00, true, "Name1", "desc", arrayListOf("url1", "url2"))
+            Church("3f3373bc-8aac-432d-9c6d-8abe395c3847", 0.00, 0.00, true, "Name1", "desc", arrayListOf("url1", "url2"))
         ))
     }
 }
