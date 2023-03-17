@@ -53,7 +53,7 @@ class SignUpTourFragment : Fragment() {
     private fun createRequestModel(): Request = Request(
         "",
         "${binding.inputSurname.text} ${binding.inputName.text} ${binding.inputParent.text}",
-         binding.inputOrganization.text.toString(),
+        binding.inputOrganization.text.toString(),
         binding.inputEmail.text.toString(),
         binding.inputPhone.text.toString(),
         binding.inputPeople.text.toString().toInt(),

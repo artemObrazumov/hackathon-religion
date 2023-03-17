@@ -42,9 +42,8 @@ class API {
             return data.toObject(Church::class.java)
         }
 
-        suspend fun sendEmail(message: String){
-            TestMailSender.sendEmail(message)
+        suspend fun sendEmail(message: String, subject: String){
+            TestMailSender.sendEmail(message, subject)
         }
-
     }
 }

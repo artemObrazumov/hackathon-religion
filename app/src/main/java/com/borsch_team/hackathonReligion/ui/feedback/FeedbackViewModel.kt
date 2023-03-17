@@ -10,7 +10,7 @@ class FeedbackViewModel: ViewModel() {
     fun sendFeedback(name: String, email: String, feedbackText: String){
         viewModelScope.launch(Dispatchers.IO) {
             API.sendFeedback(name, email, feedbackText)
-            API.sendEmail("$name $email $feedbackText")
+            API.sendEmail("Имя: $name\nЭлектронная почта:$email\nОтзыв:$feedbackText", "Отзыв о Приложении: Приложение Православный Арзамас")
         }
     }
 }
