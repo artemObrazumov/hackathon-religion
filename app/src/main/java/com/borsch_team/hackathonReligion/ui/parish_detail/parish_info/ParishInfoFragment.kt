@@ -28,6 +28,10 @@ class ParishInfoFragment(
         viewModel = ViewModelProvider(this)[ParishInfoViewModel::class.java]
         viewModel.loadParishInfo(parishID)
         viewModel.parishInfo.observe(viewLifecycleOwner) { parish ->
+            if (parish.closingInfo.isEmpty()) {
+                binding.closingTitle.visibility = View.GONE
+                binding.closingInfo.visibility = View.GONE
+            }
             if (parish.restoringInfo.isEmpty()) {
                 binding.restoringTitle.visibility = View.GONE
                 binding.restoringInfo.visibility = View.GONE
