@@ -21,6 +21,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ignoreFont" parent="TextAppearance.AppCompat.Large">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+
     <style name="Theme.АдминистраторПравославныйАрзамас.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.АдминистраторПравославныйАрзамас.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

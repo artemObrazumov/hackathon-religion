@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".ui.request.requestDetail.RequestDetailFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/feedback"
+        android:id="@+id/requests"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/feedback_item"/>
+        tools:listitem="@layout/request_item"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

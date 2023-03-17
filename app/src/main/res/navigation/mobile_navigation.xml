@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_requests"
-        android:name="com.borsch_team.adminReligion.ui.home.HomeFragment"
+        android:name="com.borsch_team.adminReligion.ui.request.RequestFragment"
         android:label="@string/menu_requests"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_requests_detail" />
 
     <fragment
         android:id="@+id/nav_feedback"

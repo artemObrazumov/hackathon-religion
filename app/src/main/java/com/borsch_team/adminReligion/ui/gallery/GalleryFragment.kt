@@ -4,35 +4,39 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.borsch_team.adminReligion.databinding.FragmentGalleryBinding
+import com.borsch_team.adminReligion.ui.adapter.FeedbackAdapter
 
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private var _viewModel: GalleryViewModel? = null
+    private val viewModel get() = _viewModel!!
+    private lateinit var adapter: FeedbackAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
+        _viewModel =
             ViewModelProvider(this).get(GalleryViewModel::class.java)
-
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        adapter = FeedbackAdapter(emptyList())
+        binding.feedback.layoutManager = LinearLayoutManager(requireContext())
+        binding.feedback.adapter = adapter
+        viewModel.feedback.observe(viewLifecycleOwner) { feedback ->
+            adapter.updateDataset(feedback)
         }
-        return root
+        viewModel.loadFeedback()
+        return binding.root
     }
 
     override fun onDestroyView() {
