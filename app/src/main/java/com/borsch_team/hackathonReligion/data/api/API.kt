@@ -62,5 +62,23 @@ class API {
             return results
         }
 
+        suspend fun loadParishInfo(parishID: String): Parishes {
+            val data = FirebaseFirestore.getInstance().collection("Parishes").document(parishID).get().await()
+            return data.toObject(Parishes::class.java)!!
+        }
+
+        suspend fun loadChurchesOfParish(parishID: String): List<Church> {
+            val result = ArrayList<Church>()
+            val churchesID = FirebaseFirestore.getInstance().collection("Parishes")
+                .document(parishID).get().await().toObject(Parishes::class.java)!!.churches
+            churchesID.forEach { id ->
+                result.add(
+                    FirebaseFirestore.getInstance().collection("Churches")
+                        .document(id).get().await().toObject(Church::class.java)!!
+                )
+            }
+            return result
+        }
+
     }
 }

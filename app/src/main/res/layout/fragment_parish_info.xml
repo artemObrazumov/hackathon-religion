@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="12dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Основная инфа"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/closingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Закрытие"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/main" />
+
+            <TextView
+                android:id="@+id/closingInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Закрытие"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/closingTitle" />
+
+            <TextView
+                android:id="@+id/restoringTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Восстановление"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/closingInfo" />
+
+            <TextView
+                android:id="@+id/restoringInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Восстановление"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/restoringTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.cardview.widget.CardView>

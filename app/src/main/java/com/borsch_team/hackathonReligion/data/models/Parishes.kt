@@ -7,5 +7,5 @@ data class Parishes(
     var mainInfo: String = "",
     var closingInfo: String = "",
     var restoringInfo: String = "",
-    var churches: String = "",
+    var churches: ArrayList<String> = arrayListOf(),
 )
