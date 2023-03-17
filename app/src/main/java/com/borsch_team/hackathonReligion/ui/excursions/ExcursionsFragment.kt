@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.borsch_team.hackathonReligion.R
 import com.borsch_team.hackathonReligion.databinding.FragmentExcursionsBinding
 import com.borsch_team.hackathonReligion.ui.adapters.ParishesAdapter
 
@@ -28,7 +30,9 @@ class ExcursionsFragment : Fragment() {
         binding = FragmentExcursionsBinding.inflate(inflater, container, false)
         viewModel.loadParishes()
         adapter = ParishesAdapter {
-            Navigation.findNavController(binding.root)
+            Navigation.findNavController(binding.root).navigate(R.id.nav_parish_detail,
+                bundleOf("parishID" to it)
+            )
         }
         viewModel.parishes.observe(viewLifecycleOwner) {
             adapter.setDataList(it)
