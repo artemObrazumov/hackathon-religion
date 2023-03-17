@@ -28,6 +28,13 @@ class API {
             )
         }
 
+        suspend fun uploadRequest(request: Request) {
+            val uuid = UUID.randomUUID().toString()
+            request.id = uuid
+            FirebaseFirestore.getInstance().collection("Requests").document(uuid)
+                .set(request)
+        }
+
         suspend fun getChurchInfo(id: String): Church? {
             val data = FirebaseFirestore.getInstance().collection("Churches").document(id).get().await()
             return data.toObject(Church::class.java)

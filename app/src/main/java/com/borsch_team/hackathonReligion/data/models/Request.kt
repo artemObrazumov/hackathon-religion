@@ -1,7 +1,5 @@
 package com.borsch_team.hackathonReligion.data.models
 
-import android.provider.ContactsContract.CommonDataKinds.Organization
-
 data class Request (
     var id: String = "",
     var fullName: String = "",
@@ -10,4 +8,5 @@ data class Request (
     var phone: String = "",
     var people: Int = 0,
     var commentary: String = "",
+    var archived: Boolean = false
 )

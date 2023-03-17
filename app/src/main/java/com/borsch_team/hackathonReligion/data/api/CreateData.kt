@@ -7,18 +7,18 @@ import java.util.UUID
 class CreateData {
     companion object {
         fun createData(){
-            var id = UUID.randomUUID().toString()
-            FirebaseFirestore.getInstance().collection("Churches").document(id).set(
-                Church(id, 55.385326, 43.817554, false, "Name1", "desc", arrayListOf("url1", "url2"))
-            )
-            id = UUID.randomUUID().toString()
-            FirebaseFirestore.getInstance().collection("Churches").document(id).set(
-                Church(id, 0.00, 0.00, true, "Name1", "desc", arrayListOf("url1", "url2"))
-            )
-            id = UUID.randomUUID().toString()
-            FirebaseFirestore.getInstance().collection("Churches").document(id).set(
-                Church(id, 0.00, 0.00, true, "Name1", "desc", arrayListOf("url1", "url2"))
-            )
+//            var id = UUID.randomUUID().toString()
+//            FirebaseFirestore.getInstance().collection("Churches").document(id).set(
+//                Church(id, 55.385326, 43.817554, false, "Name1", "desc", arrayListOf("url1", "url2"))
+//            )
+//            id = UUID.randomUUID().toString()
+//            FirebaseFirestore.getInstance().collection("Churches").document(id).set(
+//                Church(id, 0.00, 0.00, true, "Name1", "desc", arrayListOf("url1", "url2"))
+//            )
+//            id = UUID.randomUUID().toString()
+//            FirebaseFirestore.getInstance().collection("Churches").document(id).set(
+//                Church(id, 0.00, 0.00, true, "Name1", "desc", arrayListOf("url1", "url2"))
+//            )
         }
     }
 }

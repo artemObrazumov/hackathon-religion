@@ -177,6 +177,7 @@
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/EditTextIgnoreFont"
                 android:hint="Почта" />
         </com.google.android.material.textfield.TextInputLayout>
 
