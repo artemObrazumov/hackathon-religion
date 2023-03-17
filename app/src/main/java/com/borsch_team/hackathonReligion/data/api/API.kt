@@ -6,6 +6,7 @@ import com.borsch_team.hackathonReligion.data.models.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import java.util.*
+import kotlin.collections.ArrayList
 
 class API {
     companion object{
@@ -50,6 +51,15 @@ class API {
             val parishes: List<Parishes> = firestoreResult.toObjects(Parishes::class.java)
             result.addAll(parishes)
             return result
+        }
+
+        suspend fun getAllPoints(): ArrayList<Church> {
+            val result = FirebaseFirestore.getInstance().collection("Churches").get().await()
+            val results: ArrayList<Church> = ArrayList()
+            result.forEach {
+                results.add(it.toObject(Church::class.java))
+            }
+            return results
         }
 
     }

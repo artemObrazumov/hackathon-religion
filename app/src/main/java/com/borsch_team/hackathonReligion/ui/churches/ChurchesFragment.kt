@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.borsch_team.hackathonReligion.R
 import com.borsch_team.hackathonReligion.data.models.Church
 import com.borsch_team.hackathonReligion.databinding.FragmentChurchesBinding
@@ -18,6 +19,7 @@ import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.*
 import com.yandex.mapkit.map.*
 import com.yandex.runtime.ui_view.ViewProvider
+import kotlinx.coroutines.launch
 
 
 class ChurchesFragment : Fragment() {
@@ -26,6 +28,7 @@ class ChurchesFragment : Fragment() {
     private val binding get() = _binding!!
     private var mapObjects: MapObjectCollection? = null
     private lateinit var viewModel: ChurchesViewModel
+    private lateinit var churchesArr: ArrayList<Church>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,11 +37,18 @@ class ChurchesFragment : Fragment() {
     ): View {
         _binding = FragmentChurchesBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ChurchesViewModel::class.java]
+
+        viewModel.viewModelScope.launch {
+            viewModel.getDataListPoints()
+        }
+        churchesArr = viewModel.liveDataListItemsPoints.value!!
+
         viewModel.liveDataListItemsOldChurches.observe(viewLifecycleOwner){
             it.forEach {church ->
                 createOldChurchMark(church)
             }
         }
+
 
         val TARGET_LOCATION_ARZAMAS = Point(55.386799, 43.814133)
         binding.mapview.map.move(
