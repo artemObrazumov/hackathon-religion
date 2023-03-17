@@ -27,7 +27,6 @@ class ChurchInfoFragment(
 
     private lateinit var binding: FragmentChurchInfoBinding
     private lateinit var viewModel: ChurchInfoViewModel
-    private var church: Church = Church()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +43,7 @@ class ChurchInfoFragment(
         viewModel.mutableLiveDataChurch.observe(viewLifecycleOwner){church ->
             binding.churchName.text = church.name
             binding.churchDesc.text = church.description
-            binding.resGallery.layoutManager = LinearLayoutManager(context)
+            binding.resGallery.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             val adapter = GalleryAdapter{
                 val intent = Intent(context, ImageViewerActivity::class.java)
                 intent.putExtra("url_photo", it)
@@ -52,6 +51,11 @@ class ChurchInfoFragment(
             }
             adapter.setDataList(church.urlsImages)
             binding.resGallery.adapter = adapter
+            if (church.description.isEmpty()) {
+                binding.churchDesc.visibility = View.GONE
+                binding.galeryTitle.visibility = View.GONE
+                binding.resGallery.visibility = View.GONE
+            }
         }
 
         customizeDialogState()

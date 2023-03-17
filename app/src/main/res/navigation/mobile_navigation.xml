@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_churches" />
 
     <fragment
+        android:id="@+id/nav_churches_inner"
+        android:name="com.borsch_team.hackathonReligion.ui.churches.ChurchesFragment"
+        android:label="@string/menu_maps"
+        tools:layout="@layout/fragment_churches" />
+
+    <fragment
         android:id="@+id/nav_feedback"
         android:name="com.borsch_team.hackathonReligion.ui.feedback.FeedbackFragment"
         android:label="@string/menu_feedback"

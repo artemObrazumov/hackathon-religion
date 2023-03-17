@@ -13,7 +13,7 @@ class ParishInfoViewModel: ViewModel() {
 
     fun loadParishInfo(parish: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            API.loadParishInfo(parish)
+            parishInfo.postValue(API.loadParishInfo(parish))
         }
     }
 }

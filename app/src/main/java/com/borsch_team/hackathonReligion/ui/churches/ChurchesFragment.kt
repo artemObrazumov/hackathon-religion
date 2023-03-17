@@ -28,7 +28,6 @@ class ChurchesFragment : Fragment() {
     private val binding get() = _binding!!
     private var mapObjects: MapObjectCollection? = null
     private lateinit var viewModel: ChurchesViewModel
-    private lateinit var churchesArr: ArrayList<Church>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,28 +37,40 @@ class ChurchesFragment : Fragment() {
         _binding = FragmentChurchesBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ChurchesViewModel::class.java]
 
-        viewModel.viewModelScope.launch {
-            viewModel.getDataListPoints()
-        }
-        churchesArr = viewModel.liveDataListItemsPoints.value!!
+        viewModel.getDataListPoints()
 
-        viewModel.liveDataListItemsOldChurches.observe(viewLifecycleOwner){
+        viewModel.liveDataListItemsPoints.observe(viewLifecycleOwner){
             it.forEach {church ->
-                createOldChurchMark(church)
+                if (church.isOld) {
+                    createOldChurchMark(church)
+                } else {
+                    createNewChurchMark(church)
+                }
             }
         }
 
 
-        val TARGET_LOCATION_ARZAMAS = Point(55.386799, 43.814133)
+        var TARGET_LOCATION = Point(55.386799, 43.814133)
+        var zoom = 12.0f
+        arguments?.let {
+            TARGET_LOCATION = Point(it.getDouble("x"), it.getDouble("y"))
+            zoom = 20.0f
+        }
         binding.mapview.map.move(
-            CameraPosition(TARGET_LOCATION_ARZAMAS, 12.0f, 0.0f, 0.0f),
+            CameraPosition(TARGET_LOCATION, zoom, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 1F),
             null
         )
         mapObjects = binding.mapview.map.mapObjects.addCollection()
 
         binding.search.setOnClickListener {
-            ChurchSearchFragment().show(childFragmentManager, "church_$id")
+            ChurchSearchFragment { church ->
+                binding.mapview.map.move(
+                    CameraPosition(Point(church.x, church.y), 20.0f, 0.0f, 0.0f),
+                    Animation(Animation.Type.SMOOTH, 1F),
+                    null
+                )
+            }.show(childFragmentManager, "church_$id")
         }
 
         return binding.root
@@ -83,11 +94,34 @@ class ChurchesFragment : Fragment() {
     }
 
     private fun createOldChurchMark(church: Church) {
+        if (church.x == 0.0) {
+            return
+        }
         val imageView = ImageView(requireContext())
         imageView.setImageResource(R.drawable.baseline_church_24)
         imageView.setColorFilter(ContextCompat.getColor(
             requireContext(), R.color.oldChurch), android.graphics.PorterDuff.Mode.SRC_IN)
         imageView.setBackgroundResource(R.drawable.church_old_item_background)
+
+        imageView.setPadding(6,6,6,6)
+        imageView.minimumHeight = 48
+        imageView.minimumWidth = 48
+        val viewProvider = ViewProvider(imageView)
+        val churchMark = mapObjects!!.addPlacemark(
+            Point(church.x, church.y), viewProvider)
+        churchMark.addTapListener(circleMapObjectTapListener)
+        churchMark.userData = ChurchMarkerData(church.id)
+    }
+
+    private fun createNewChurchMark(church: Church) {
+        if (church.x == 0.0) {
+            return
+        }
+        val imageView = ImageView(requireContext())
+        imageView.setImageResource(R.drawable.baseline_church_24)
+        imageView.setColorFilter(ContextCompat.getColor(
+            requireContext(), R.color.newChurch), android.graphics.PorterDuff.Mode.SRC_IN)
+        imageView.setBackgroundResource(R.drawable.church_new_item_background)
 
         imageView.setPadding(6,6,6,6)
         imageView.minimumHeight = 48

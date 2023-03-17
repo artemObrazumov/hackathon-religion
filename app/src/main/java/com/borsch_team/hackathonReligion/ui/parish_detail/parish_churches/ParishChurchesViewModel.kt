@@ -14,7 +14,7 @@ class ParishChurchesViewModel: ViewModel() {
 
     fun loadChurchesOfParish(parish: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            API.loadChurchesOfParish(parish)
+            churches.postValue(API.loadChurchesOfParish(parish))
         }
     }
 }

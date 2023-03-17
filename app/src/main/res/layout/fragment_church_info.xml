@@ -20,9 +20,9 @@
                 android:layout_height="wrap_content"
                 android:text="Название церкви"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="20sp"
+                android:layout_marginTop="24dp"
                 android:textColor="@color/black"
-                android:layout_marginTop="8dp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="Краткое описание церкви"
                 android:layout_marginTop="4dp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@+id/churchName" />
 
             <TextView
@@ -39,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:text="Галерея"
                 android:textStyle="bold"
-                android:textSize="14sp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 android:layout_marginTop="4dp"
                 app:layout_constraintTop_toBottomOf="@+id/churchDesc" />
 

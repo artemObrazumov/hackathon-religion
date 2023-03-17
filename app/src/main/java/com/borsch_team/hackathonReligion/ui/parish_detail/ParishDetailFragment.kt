@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.borsch_team.hackathonReligion.R
 import com.borsch_team.hackathonReligion.databinding.FragmentParishDetailBinding
+import com.borsch_team.hackathonReligion.ui.main.MainActivity
 
 class ParishDetailFragment: Fragment() {
 
@@ -25,7 +26,9 @@ class ParishDetailFragment: Fragment() {
         binding = FragmentParishDetailBinding.inflate(inflater, container, false)
         adapter = ParishDetailTabAdapter(
             requireActivity(), requireArguments().getString("parishID")!!
-        )
+        ) {
+            (activity as MainActivity).supportActionBar!!.title = it.title
+        }
         binding.pager.adapter = adapter
         binding.pager.offscreenPageLimit = 2
         binding.buttonTab1.setOnClickListener {

@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.borsch_team.hackathonReligion.R
 import com.borsch_team.hackathonReligion.databinding.FragmentParishChurchesBinding
 import com.borsch_team.hackathonReligion.databinding.FragmentParishDetailBinding
 import com.borsch_team.hackathonReligion.databinding.FragmentParishInfoBinding
@@ -28,7 +31,11 @@ class ParishChurchesFragment(
     ): View {
         binding = FragmentParishChurchesBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ParishChurchesViewModel::class.java]
-        adapter = ChurchesAdapter {  }
+        adapter = ChurchesAdapter {
+            Navigation.findNavController(binding.root).navigate(R.id.nav_churches_inner,
+                bundleOf("x" to it.x, "y" to it.y)
+            )
+        }
         viewModel.loadChurchesOfParish(parishID)
         viewModel.churches.observe(viewLifecycleOwner) { churches ->
             adapter.setDataList(churches)
