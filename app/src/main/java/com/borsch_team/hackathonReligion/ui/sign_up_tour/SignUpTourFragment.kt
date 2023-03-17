@@ -34,7 +34,9 @@ class SignUpTourFragment : Fragment() {
                 createRequestModel()
             )
             clearForm()
-            ThanksFragment().show(childFragmentManager, "")
+            ThanksFragment(
+                "Заявка отправлена!", "Ваша заявка была отправлена. Вы можете продолжить пользоваться приложением"
+            ).show(childFragmentManager, "signup_finished")
         }
         return binding.root
     }

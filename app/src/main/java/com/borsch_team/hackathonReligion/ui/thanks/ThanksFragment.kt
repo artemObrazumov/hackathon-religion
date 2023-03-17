@@ -12,7 +12,10 @@ import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.DialogFragment
 import com.borsch_team.hackathonReligion.R
 
-class ThanksFragment: AppCompatDialogFragment() {
+class ThanksFragment(
+    private val title: String = "",
+    private val content: String = ""
+): AppCompatDialogFragment() {
     private lateinit var customView: View
 
     @SuppressLint("InflateParams")
@@ -21,6 +24,8 @@ class ThanksFragment: AppCompatDialogFragment() {
         customView.findViewById<TextView>(R.id.dismiss).setOnClickListener {
             dismiss()
         }
+        customView.findViewById<TextView>(R.id.title).text = title
+        customView.findViewById<TextView>(R.id.messsage).text = content
 
         return AlertDialog.Builder(this.context)
             .setView(customView)

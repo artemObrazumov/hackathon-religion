@@ -34,6 +34,7 @@
                 android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
                 android:hint="Имя" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,6 +52,7 @@
                 android:id="@+id/input_surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
                 android:hint="Фамилия" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,6 +70,7 @@
                 android:id="@+id/input_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
                 android:hint="Отчество" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/input_parent_layout">
@@ -97,6 +100,7 @@
                 android:layout_height="wrap_content"
                 android:lines="3"
                 android:gravity="top"
+                android:inputType="textPersonName"
                 android:hint="Организация" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,6 +118,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:layout_marginHorizontal="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -142,6 +147,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/input_group_layout">
@@ -170,6 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/input_phone_layout">
 
@@ -178,6 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/EditTextIgnoreFont"
+                android:textSize="16sp"
                 android:hint="Почта" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -196,6 +204,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/input_email_layout">

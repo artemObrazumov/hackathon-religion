@@ -7,33 +7,34 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.borsch_team.hackathonReligion.databinding.FragmentExcursionsBinding
+import com.borsch_team.hackathonReligion.ui.adapters.ParishesAdapter
 
 class ExcursionsFragment : Fragment() {
 
-    private var _binding: FragmentExcursionsBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentExcursionsBinding
+    private lateinit var viewModel: ExcursionsViewModel
+    private lateinit var adapter: ParishesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val excursionsViewModel =
-            ViewModelProvider(this).get(ExcursionsViewModel::class.java)
-
-        _binding = FragmentExcursionsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textHome
-        excursionsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        viewModel =
+            ViewModelProvider(this)[ExcursionsViewModel::class.java]
+        binding = FragmentExcursionsBinding.inflate(inflater, container, false)
+        viewModel.loadParishes()
+        adapter = ParishesAdapter {
+            Navigation.findNavController(binding.root)
         }
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        viewModel.parishes.observe(viewLifecycleOwner) {
+            adapter.setDataList(it)
+        }
+        binding.parishes.layoutManager = LinearLayoutManager(requireContext())
+        binding.parishes.adapter = adapter
+        return binding.root
     }
 }

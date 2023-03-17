@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.borsch_team.hackathonReligion.databinding.FragmentFeedbackBinding
+import com.borsch_team.hackathonReligion.ui.thanks.ThanksFragment
 
 class FeedbackFragment: Fragment() {
     private lateinit var binding: FragmentFeedbackBinding
@@ -28,10 +29,15 @@ class FeedbackFragment: Fragment() {
 
             if(name != "" && email != "" && feedbackText != ""){
                 viewModel.sendFeedback(name, email, feedbackText)
-                Toast.makeText(context, "Отзыв отправлен", Toast.LENGTH_SHORT).show()
+                binding.feedbackEtName.text.clear()
+                binding.feedbackEtEmail.text.clear()
+                binding.feedbackEtFeedback.text.clear()
             }else{
                 Toast.makeText(context, "Заполните все поля!", Toast.LENGTH_SHORT).show()
             }
+            ThanksFragment(
+                "Отзыв отправлен!", "Ваш отзыв был отправлен. Вы можете продолжить пользоваться приложением"
+            ).show(childFragmentManager, "signup_finished")
         }
 
         return binding.root
