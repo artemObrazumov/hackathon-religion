@@ -1,12 +1,14 @@
 package com.borsch_team.hackathonReligion.data.api
 
+
+import com.borsch_team.hackathonReligion.data.api.mail.TestMailSender
 import com.borsch_team.hackathonReligion.data.models.Church
 import com.borsch_team.hackathonReligion.data.models.FeedbackModel
 import com.borsch_team.hackathonReligion.data.models.FilmModel
 import com.borsch_team.hackathonReligion.data.models.Request
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
-import java.util.UUID
+import java.util.*
 
 class API {
     companion object{
@@ -39,5 +41,10 @@ class API {
             val data = FirebaseFirestore.getInstance().collection("Churches").document(id).get().await()
             return data.toObject(Church::class.java)
         }
+
+        suspend fun sendEmail(message: String){
+            TestMailSender.sendEmail(message)
+        }
+
     }
 }

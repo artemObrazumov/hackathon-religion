@@ -15,7 +15,7 @@ class ImageViewerActivity : AppCompatActivity() {
         binding = ActivityImageViewerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val url = intent.getStringExtra("urlPhoto")
+        val url = intent.getStringExtra("url_photo")
 
         Glide
             .with(this)
