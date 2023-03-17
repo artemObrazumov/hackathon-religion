@@ -15,4 +15,6 @@
     <string name="menu_maps">Карта Храмов</string>
     <string name="menu_feedback">Оставить отзыв</string>
     <string name="menu_sign_up_tour">Записаться на экскурсию</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

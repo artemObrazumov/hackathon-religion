@@ -50,9 +50,7 @@ class ChurchInfoFragment(
                 intent.putExtra("url_photo", it)
                 startActivity(intent)
             }
-            adapter.setDataList(arrayListOf(
-                "https://www.dicoding.com/blog/wp-content/uploads/2019/01/rvlv2.png"
-            ))
+            adapter.setDataList(church.urlsImages)
             binding.resGallery.adapter = adapter
         }
 

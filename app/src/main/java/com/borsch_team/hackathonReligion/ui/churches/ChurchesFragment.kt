@@ -12,6 +12,7 @@ import com.borsch_team.hackathonReligion.R
 import com.borsch_team.hackathonReligion.data.models.Church
 import com.borsch_team.hackathonReligion.databinding.FragmentChurchesBinding
 import com.borsch_team.hackathonReligion.ui.church_info.ChurchInfoFragment
+import com.borsch_team.hackathonReligion.ui.church_search.ChurchSearchFragment
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.*
@@ -46,6 +47,10 @@ class ChurchesFragment : Fragment() {
             null
         )
         mapObjects = binding.mapview.map.mapObjects.addCollection()
+
+        binding.search.setOnClickListener {
+            ChurchSearchFragment().show(childFragmentManager, "church_$id")
+        }
 
         return binding.root
     }
