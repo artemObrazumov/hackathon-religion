@@ -12,7 +12,7 @@ class TestMailSender {
             val from = "FSL-Tikaani@yandex.ru"
             val pass = "zdykvlxxhatjzxuj"
             // Данные получателя
-            val to = "romik152006@mail.ru"
+            val to = "parfenov-dmitry1986@yandex.ru"
             // Настройки SMTP Яндекса
             val host = "smtp.yandex.com"
             val props = System.getProperties()

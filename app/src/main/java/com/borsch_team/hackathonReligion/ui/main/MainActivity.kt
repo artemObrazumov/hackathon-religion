@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val headerview: View = navigationView.getHeaderView(0)
         headerview.setOnClickListener {
-            Toast.makeText(this, "Ckicked", Toast.LENGTH_SHORT).show()
+            navController.navigate(R.id.nav_about_city)
         }
     }
 

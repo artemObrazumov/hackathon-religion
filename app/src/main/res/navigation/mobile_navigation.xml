@@ -46,4 +46,10 @@
         android:name="com.borsch_team.hackathonReligion.ui.parish_detail.ParishDetailFragment"
         android:label=""
         tools:layout="@layout/fragment_parish_detail" />
+
+    <fragment
+        android:id="@+id/nav_about_city"
+        android:name="com.borsch_team.hackathonReligion.ui.about_city.AboutCityFragment"
+        android:label="Об Арзамасе"
+        tools:layout="@layout/fragment_about_city" />
 </navigation>
