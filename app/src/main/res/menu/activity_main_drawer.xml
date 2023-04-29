@@ -5,6 +5,14 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_parishes"
+            android:icon="@drawable/baseline_format_list_bulleted_24"
+            android:title="@string/menu_parishes" />
+        <item
+            android:id="@+id/nav_churches"
+            android:icon="@drawable/baseline_church_24"
+            android:title="@string/menu_churches" />
+        <item
             android:id="@+id/nav_requests"
             android:icon="@drawable/baseline_check_box_24"
             android:title="@string/menu_requests" />

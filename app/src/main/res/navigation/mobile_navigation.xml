@@ -3,7 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_requests">
+    app:startDestination="@+id/nav_parishes">
+
+    <fragment
+        android:id="@+id/nav_parishes"
+        android:name="com.borsch_team.adminReligion.ui.parishes.ParishesFragment"
+        android:label="@string/menu_parishes"
+        tools:layout="@layout/fragment_parishes" />
+
+    <fragment
+        android:id="@+id/nav_churches"
+        android:name="com.borsch_team.adminReligion.ui.churches.ChurchesFragment"
+        android:label="@string/menu_churches"
+        tools:layout="@layout/fragment_churches" />
 
     <fragment
         android:id="@+id/nav_requests"
@@ -16,4 +28,10 @@
         android:name="com.borsch_team.adminReligion.ui.gallery.GalleryFragment"
         android:label="@string/menu_feedback"
         tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_church_detail"
+        android:name="com.borsch_team.adminReligion.ui.churches.church_detail.ChurchDetailFragment"
+        android:label="@string/menu_churches"
+        tools:layout="@layout/fragment_church_detail" />
 </navigation>
