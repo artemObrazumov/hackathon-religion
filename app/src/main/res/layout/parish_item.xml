@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/parish_thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/churches"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:shapeAppearanceOverlay="@style/Parishes" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/parishes_background"
+        app:layout_constraintBottom_toBottomOf="@+id/parish_thumbnail"
+        app:layout_constraintEnd_toEndOf="@+id/parish_thumbnail"
+        app:layout_constraintStart_toStartOf="@+id/parish_thumbnail"
+        app:layout_constraintTop_toTopOf="@+id/parish_thumbnail"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Название прихода"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/remove"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/baseline_church_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/churches"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="0 церквей"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:paddingBottom="14dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/remove"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/baseline_delete_24"
+        android:padding="8dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:tint="@color/white"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintBottom_toBottomOf="@+id/parish_thumbnail"
+        app:layout_constraintEnd_toEndOf="@+id/parish_thumbnail"
+        app:layout_constraintTop_toTopOf="@+id/parish_thumbnail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

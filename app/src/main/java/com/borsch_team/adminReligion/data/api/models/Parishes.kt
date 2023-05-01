@@ -1,4 +1,4 @@
-package com.borsch_team.hackathonReligion.data.models
+package com.borsch_team.adminReligion.data.api.models
 
 data class Parishes(
     var id: String = "",

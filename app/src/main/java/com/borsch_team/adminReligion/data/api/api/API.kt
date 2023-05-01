@@ -4,12 +4,11 @@ import android.net.Uri
 import android.util.Log
 import com.borsch_team.hackathonReligion.data.models.Church
 import com.borsch_team.hackathonReligion.data.models.FeedbackModel
+import com.borsch_team.adminReligion.data.api.models.Parishes
 import com.borsch_team.hackathonReligion.data.models.Request
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -100,6 +99,43 @@ class API {
             val firestore = FirebaseFirestore.getInstance()
             val docRef = firestore.collection("Churches").document(church.id)
             docRef.set(church).await()
+        }
+
+        suspend fun loadParishes(): List<Parishes> =
+            FirebaseFirestore.getInstance().collection("Parishes")
+                .get().await()
+                .toObjects(Parishes::class.java)
+
+        suspend fun loadParish(id: String): Parishes =
+            FirebaseFirestore.getInstance().collection("Parishes").document(id)
+                .get().await().toObject(Parishes::class.java)!!
+
+        suspend fun loadChurches(): List<Church> =
+            FirebaseFirestore.getInstance().collection("Churches")
+                .get().await().toObjects(Church::class.java)
+
+        suspend fun loadChurchesOfParishes(churchesId: java.util.ArrayList<String>): List<Church> {
+            val churches = mutableListOf<Church>()
+            churchesId.forEach {
+                churches.add(
+                    FirebaseFirestore.getInstance().collection("Churches").document(it)
+                        .get().await().toObject(Church::class.java)!!
+                )
+            }
+            return churches
+        }
+
+        suspend fun uploadParishImage(imageURI: Uri): String {
+            val reference = FirebaseStorage.getInstance()
+                .getReference("parishThumbnails/${UUID.randomUUID()}")
+            reference.putFile(imageURI).await()
+            return reference.downloadUrl.await().toString()
+        }
+
+        suspend fun uploadParish(parish: Parishes, onFinished: () -> Unit) {
+            FirebaseFirestore.getInstance().collection("Parishes")
+                .document(parish.id).set(parish).await()
+            onFinished()
         }
     }
 }
